@@ -1,0 +1,29 @@
+from replit import clear
+
+from art import logo
+print("Welcome to the secret auction program")
+print(logo)
+
+bids = {}
+bidding_finished = False
+
+def find_highest_bidder(bidder_dict): 
+  a = 0
+  winner = ""
+  for bidder in bidder_dict:
+    bid_amount = bidder_dict[bidder]
+    if bid_amount > a:
+      a = bid_amount
+      winner = bidder
+  print(f"The winner is {winner} with a bid of ${a}")
+
+while not bidding_finished:
+  name = input("What is your name?: ")
+  bid = int(input("What is your bid?: "))
+  bids[name] = bid
+  should_continue = input("Are there any other bidders? Type 'yes' or 'no'. \n")
+  if should_continue == "no":
+    bidding_finished == True
+    find_highest_bidder(bids)
+  elif should_continue == "yes":
+    clear() 
